@@ -1,1 +1,11 @@
-[]
+- id: '1674994585566'
+  alias: Push configuration to Github daily
+  description: ''
+  trigger:
+  - platform: time
+    at: 05:05:05
+  condition: []
+  action:
+  - service: shell_command.pushupdates_to_github
+    data: {}
+  mode: single
