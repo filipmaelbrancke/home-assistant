@@ -13,7 +13,7 @@ secrets.yaml
 .cloud
 .google.token
 home-assistant.log*
-home-assistant_v2
+home-assistant_v2*
 id_rsa*
 notebooks/
 esphome/
