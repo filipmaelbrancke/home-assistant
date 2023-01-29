@@ -13,3 +13,6 @@ tts:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+shell_command:
+  pushupdates_to_github: /bin/bash pushupdates.sh
