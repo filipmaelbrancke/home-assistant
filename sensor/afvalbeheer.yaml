@@ -1,0 +1,15 @@
+- platform: afvalbeheer
+  wastecollector: RecycleApp
+  resources:
+    - restafval
+    - gft
+    - papier
+    - pmd
+  postcode: 8970
+  cityname: Reningelst
+  streetname: Nedergraafstraat
+  streetnumber: 1
+  upcomingsensor: 1
+  printwastetypes: 1
+  builtinicons: 1
+  
