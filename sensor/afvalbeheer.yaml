@@ -5,9 +5,9 @@
     - gft
     - papier
     - pmd
-  postcode: 8970
-  cityname: Reningelst
-  streetname: Nedergraafstraat
+  postcode: !secret personal_zipcode
+  cityname: !secret personal_city
+  streetname: !secret personal_street
   streetnumber: 1
   upcomingsensor: 1
   printwastetypes: 1
