@@ -1,5 +1,6 @@
 - platform: afvalbeheer
   wastecollector: RecycleApp
+  # Available waste types: gft, kga, papier, pmd, restafval
   resources:
     - restafval
     - gft
@@ -10,6 +11,6 @@
   streetname: !secret personal_street
   streetnumber: 1
   upcomingsensor: 1
-  printwastetypes: 1
+  printwastetypes: 0
   builtinicons: 1
   
