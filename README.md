@@ -1,5 +1,7 @@
 # Home Assistant configuration
 
+I have a Home Assistant install running nicely for several years already, this is an attempt at restarting from scratch.
+
 ## Add-ons
 
 - https://github.com/hacs/integration

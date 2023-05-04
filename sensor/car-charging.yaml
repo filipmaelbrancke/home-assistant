@@ -1,0 +1,10 @@
+- platform: rest
+  name: local charging station free slots
+  resource: !secret car_charger_api_location_url
+  headers:
+    Ocp-Apim-Subscription-Key: !secret car_charger_api_subscription_key
+    Origin: https://www.enbw.com
+    Referer: https://www.enbw.com/
+    Accept: application/json
+  value_template: "{{ value_json.availableChargePoints | int}}"
+  scan_interval: 300
