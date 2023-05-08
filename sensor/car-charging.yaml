@@ -7,4 +7,4 @@
     Referer: https://www.enbw.com/
     Accept: application/json
   value_template: "{{ value_json.availableChargePoints | int}}"
-  scan_interval: 300
+  scan_interval: 180
