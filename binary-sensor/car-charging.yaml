@@ -1,0 +1,12 @@
+- platform: template
+  sensors:
+    ev_local_charger_available:
+      friendly_name: "Local Charger Available"
+      value_template: >-
+          {{ states('sensor.local_charging_station_free_slots')|int > 0 }}
+      icon_template: >-
+          {% if states('sensor.local_charging_station_free_slots')|int > 0 %}
+            mdi:ev-station
+          {% else %}
+            mdi:car-electric
+          {% endif %}
