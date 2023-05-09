@@ -1,15 +1,30 @@
 - platform: rest
+  name: local charging station free slots
   resource: !secret car_charger_api_location_url
   headers:
     Ocp-Apim-Subscription-Key: !secret car_charger_api_subscription_key
     Origin: https://www.enbw.com
     Referer: https://www.enbw.com/
     Accept: application/json
-  scan_interval: 180
-  sensor:
-    - name: local charging station free slots
-      value_template: "{{ value_json.availableChargePoints | int }}"
-    - name: "local charging station left"
-      value_template: !secret car_charger_api_charger_1
-    - name: "local charging station right"
-      value_template: !secret car_charger_api_charger_2
+  value_template: "{{ value_json.availableChargePoints | int}}"
+  scan_interval: 300
+- platform: rest
+  name: local charging station left
+  resource: !secret car_charger_api_location_url
+  headers:
+    Ocp-Apim-Subscription-Key: !secret car_charger_api_subscription_key
+    Origin: https://www.enbw.com
+    Referer: https://www.enbw.com/
+    Accept: application/json
+  value_template: !secret car_charger_api_charger_1
+  scan_interval: 600
+- platform: rest
+  name: local charging station right
+  resource: !secret car_charger_api_location_url
+  headers:
+    Ocp-Apim-Subscription-Key: !secret car_charger_api_subscription_key
+    Origin: https://www.enbw.com
+    Referer: https://www.enbw.com/
+    Accept: application/json
+  value_template: !secret car_charger_api_charger_2
+  scan_interval: 600
