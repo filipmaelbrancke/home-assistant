@@ -1,0 +1,101 @@
+- id: '1684243064680'
+  name: Night lighting
+  entities:
+    light.ledstrip_living_kant_keuken:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: ledstrip living kant keuken
+      supported_features: 44
+      state: 'off'
+    light.ledstrip_grote_venster_living:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: ledstrip grote venster living
+      supported_features: 44
+      color_mode: hs
+      brightness: 51
+      hs_color:
+      - 255.059
+      - 100
+      rgb_color:
+      - 64
+      - 0
+      - 255
+      xy_color:
+      - 0.158
+      - 0.05
+      effect: none
+      state: 'on'
+    light.ledstrip_achter_tv_beneden:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: ledstrip achter tv beneden
+      supported_features: 44
+      state: 'off'
+    light.ledstrip_achter_tv_boven:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: ledstrip achter tv boven
+      supported_features: 44
+      color_mode: hs
+      brightness: 51
+      hs_color:
+      - 10.118
+      - 100
+      rgb_color:
+      - 255
+      - 43
+      - 0
+      xy_color:
+      - 0.689
+      - 0.309
+      effect: none
+      state: 'on'
+    light.ledstrip_nieuwbouw_bureau:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: ledstrip nieuwbouw bureau
+      supported_features: 44
+      state: 'off'
+  icon: mdi:lightbulb-night
+  metadata: {}
