@@ -1,4 +1,3 @@
-
 # Loads default set of integrations. Do not remove.
 default_config:
 
@@ -19,3 +18,13 @@ shell_command:
 
 sensor: !include_dir_merge_list sensor
 binary_sensor: !include_dir_merge_list binary-sensor
+
+logger:
+  default: info
+  # logs:
+  # velbus-parser: debug
+  # velbus-module: debug
+  # velbus-packet: debug
+  # velbus-protocol: debug
+  # velbus: debug
+  # homeassistant.components.velbus: debug

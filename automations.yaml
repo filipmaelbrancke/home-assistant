@@ -9,3 +9,53 @@
   - service: shell_command.pushupdates_to_github
     data: {}
   mode: single
+- id: '1688668153520'
+  alias: Synchronize Velbus time daily & on boot
+  description: Synchronize the clock of the Velbus modules to the clock of the Home
+    Assistant machine. Also run this automation after Home Assistant boots (in case
+    the whole system has been power-cycled, the Velbus VMBELO module starts up without
+    clock)
+  trigger:
+  - platform: time
+    at: 03:30:00
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: velbus.sync_clock
+    data:
+      interface: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
+  mode: single
+- id: '1688672038200'
+  alias: Blinds down at night
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:10:00
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    target:
+      entity_id: cover.all_covers
+  mode: single
+- id: '1688672230682'
+  alias: Turn ledstrips off at sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id:
+      - light.ledstrip_achter_tv_beneden
+      - light.ledstrip_achter_tv_boven
+      - light.ledstrip_grote_venster_living
+      - light.ledstrip_living_kant_keuken
+      - light.ledstrip_nieuwbouw_bureau
+  mode: single
