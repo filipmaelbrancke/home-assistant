@@ -9,6 +9,27 @@ I have a Home Assistant install running nicely for several years already, this i
 - https://github.com/pippyn/Home-Assistant-Sensor-Afvalbeheer
 
 
+### Connected devices
+
+USB connection:
+
+Velbus USB interface:
+
+```
+/dev/ttyACM0
+
+/dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
+```
+
+RFLink:
+
+```
+/dev/ttyACM1
+
+/dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_75830333439351E07090-if00
+```
+
+
 ## Resources
 
 ### Backups
