@@ -4,3 +4,8 @@
     unit_of_measurement: "°C"
     value_template: "{{ value | multiply(0.001) | round(1) }}"
     scan_interval: 10
+
+- sensor:
+    name: "Config last backup"
+    command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
+    scan_interval: 600

@@ -11,8 +11,7 @@
     - type: memory_free
     - type: processor_use
     - type: last_boot
-
-- platform: command_line
-  name: "Config last backup"
-  command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
-  scan_interval: 60
+# - platform: command_line
+#   name: "Config last backup"
+#   command: cd /config && git --no-pager log -n 1 --pretty=%cd --date=local origin/master
+#   scan_interval: 60

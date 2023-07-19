@@ -59,3 +59,20 @@
       - light.ledstrip_living_kant_keuken
       - light.ledstrip_nieuwbouw_bureau
   mode: single
+- id: '1689693395970'
+  alias: Low battery level detection
+  description: Low battery level detection & notification for all battery sensors
+  use_blueprint:
+    path: Marck/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      exclude:
+        entity_id:
+        - sensor.i4_edrive40_remaining_battery_percent
+        - number.i4_edrive40_target_soc
+        - sensor.pixel_7_battery_level
+        - binary_sensor.bureau_sensor_battery_low
+      actions:
+      - service: notify.mobile_app_pixel_7
+        data:
+          title: Batterij leeg!
+          message: Batterij moet gecheckt worden!
