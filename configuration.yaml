@@ -19,6 +19,7 @@ shell_command:
 sensor: !include_dir_merge_list sensor
 binary_sensor: !include_dir_merge_list binary-sensor
 command_line: !include devices/command-line.yaml
+group: !include group/groups.yaml
 
 logger:
   default: info

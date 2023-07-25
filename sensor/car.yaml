@@ -1,0 +1,22 @@
+- platform: template
+  sensors:
+    i4_edrive40_charging_time_remaining:
+      friendly_name: "Charging time remaining"
+      unique_id: "i4_edrive40_custom_charging_time_remaining"
+      # device_class: duration
+      # unit_of_measurement: s
+      value_template: >
+          {% if is_state('sensor.i4_edrive40_charging_end_time', 'Unknown') %}
+           {{ 0 }}
+          {% else %}
+           {% set now_timestamp = as_timestamp(now()) %}
+           {% set charging_end_time_timestamp = as_timestamp(states('sensor.i4_edrive40_charging_end_time')) %}
+           {% set charging_duration = charging_end_time_timestamp - now_timestamp | int %}
+           {{ charging_duration | int | timestamp_custom('%H:%M', false) }}
+          {% endif %}
+      icon_template: >-
+        {% if is_state('sensor.i4_edrive40_charging_end_time', 'Unknown') %}
+          mdi:clock-outline
+        {% else %}
+          mdi:clock-end
+        {% endif %}

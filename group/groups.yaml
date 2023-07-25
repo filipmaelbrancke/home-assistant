@@ -1,0 +1,6 @@
+family:
+  name: "Family"
+  icon: mdi:account-group
+  entities:
+    - person.filip
+    - person.trees
