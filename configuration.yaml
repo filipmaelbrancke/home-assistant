@@ -19,46 +19,10 @@ shell_command:
 sensor: !include_dir_merge_list sensor
 binary_sensor: !include_dir_merge_list binary-sensor
 command_line: !include devices/command-line.yaml
+cover: !include devices/cover.yaml
 group: !include group/groups.yaml
 
-logger:
-  default: info
-  logs:
-    # aiounifi: debug
-    # homeassistant.components.unifi: debug
-    homeassistant.components.device_tracker.unifi: debug
-    # homeassistant.components.switch.unifi: debug
-    # rflink: debug
-    # homeassistant.components.rflink: debug
-    # velbus-parser: debug
-    # velbus-module: debug
-    # velbus-packet: debug
-    # velbus-protocol: debug
-    # velbus: debug
-    # homeassistant.components.velbus: debug
+logger: !include logger.yaml
 
 rflink:
   port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_75830333439351E07090-if00
-
-# Add Somfy RTS covers
-cover:
-  - platform: rflink
-    devices:
-      RTS_0A0A0A_0:
-        name: Rolluik Bureau Links
-        aliases:
-          - rts_eba239_01
-      RTS_0B0B0B_0:
-        name: Rolluik Bureau Links-Midden
-        aliases:
-          - rts_eca239_01
-      RTS_0C0C0C_0:
-        name: Rolluik Bureau Rechts-Midden
-        aliases:
-          - rts_eda239_01
-      RTS_0D0D0D_0:
-        name: Rolluik Bureau Rechts
-        aliases:
-          - rts_eea239_01
-      RTS_0E0E0E_0:
-        name: Rolluiken Bureau

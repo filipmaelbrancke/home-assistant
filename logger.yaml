@@ -1,0 +1,29 @@
+default: info
+logs:
+  # aiounifi: debug
+  # hacs: error
+  # rflink: debug
+  # velbus-parser: debug
+  # velbus-module: debug
+  # velbus-packet: debug
+  # velbus-protocol: debug
+  # velbus: debug
+  homeassistant.core: error
+  homeassistant.config_entries: error
+  homeassistant.components.automation: warn
+  homeassistant.components.binary_sensor: error
+  homeassistant.components.cloud: debug
+  homeassistant.components.device_tracker: error
+  homeassistant.components.http: warn
+  homeassistant.components.media_player: info
+  homeassistant.components.rest.sensor: critical
+  homeassistant.components.recorder: error
+  homeassistant.components.sensor.rest: info
+  # homeassistant.components.unifi: debug
+  homeassistant.components.device_tracker.unifi: debug
+  # homeassistant.components.switch.unifi: debug
+  # homeassistant.components.rflink: debug
+  # homeassistant.components.velbus: debug
+  homeassistant.exceptions: info
+  homeassistant.helpers.script: info
+  homeassistant.helpers.entity: critical

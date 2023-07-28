@@ -1,0 +1,21 @@
+# Add Somfy RTS covers
+- platform: rflink
+  devices:
+    RTS_0A0A0A_0:
+      name: Rolluik Bureau Links
+      aliases:
+        - rts_eba239_01
+    RTS_0B0B0B_0:
+      name: Rolluik Bureau Links-Midden
+      aliases:
+        - rts_eca239_01
+    RTS_0C0C0C_0:
+      name: Rolluik Bureau Rechts-Midden
+      aliases:
+        - rts_eda239_01
+    RTS_0D0D0D_0:
+      name: Rolluik Bureau Rechts
+      aliases:
+        - rts_eea239_01
+    RTS_0E0E0E_0:
+      name: Rolluiken Bureau
