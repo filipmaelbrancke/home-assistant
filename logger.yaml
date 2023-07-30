@@ -27,3 +27,8 @@ logs:
   homeassistant.exceptions: info
   homeassistant.helpers.script: info
   homeassistant.helpers.entity: critical
+  # ZHA
+  # homeassistant.components.zha: debug
+  # bellows.zigbee.application: debug
+  # bellows.ezsp: debug
+  # zigpy: debug

@@ -26,3 +26,8 @@ logger: !include logger.yaml
 
 rflink:
   port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_75830333439351E07090-if00
+
+zha:
+  zigpy_config:
+    ota:
+      ikea_provider: true # Auto update Trådfri devices

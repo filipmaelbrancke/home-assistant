@@ -76,3 +76,18 @@
         data:
           title: Batterij leeg!
           message: Batterij moet gecheckt worden!
+- id: '1690674892785'
+  alias: 'Activeer nachtverlichting bij drukken op alles uit/slaapstand '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.bureau_knop_3
+    to: 'on'
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.night_lighting
+    metadata: {}
+  mode: single
