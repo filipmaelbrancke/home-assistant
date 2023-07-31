@@ -77,8 +77,9 @@
           title: Batterij leeg!
           message: Batterij moet gecheckt worden!
 - id: '1690674892785'
-  alias: 'Activeer nachtverlichting bij drukken op alles uit/slaapstand '
-  description: ''
+  alias: Activate night lighting on office night scene selection
+  description: Activate night lighting when pressing the sleep mode button on the
+    office touch panel
   trigger:
   - platform: state
     entity_id:
@@ -90,4 +91,27 @@
     target:
       entity_id: scene.night_lighting
     metadata: {}
+  mode: single
+- id: '1690755948562'
+  alias: Open office covers in the morning
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 01:00:00
+  condition: []
+  action:
+  - service: cover.open_cover
+    data: {}
+    target:
+      entity_id: cover.office_covers
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 6
+      milliseconds: 0
+  - service: cover.stop_cover
+    data: {}
+    target:
+      entity_id: cover.office_covers
   mode: single
