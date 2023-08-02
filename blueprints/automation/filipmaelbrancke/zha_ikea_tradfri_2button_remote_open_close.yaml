@@ -1,0 +1,67 @@
+---
+# This automation simulates the use of the IKEA TRADFRI Open/Close control
+# connected through ZHA.
+# Manufacturer for mine is listed as 'KE', not 'IKEA of Sweden' as all other Tradfri devices
+# see https://github.com/home-assistant/core/issues/46488
+# Inspiration:
+# https://github.com/niro1987/homeassistant-config/blob/main/blueprints/automation/niro1987/zha_ikea_tradfri_2button_remote_custom.yaml
+# https://community.home-assistant.io/t/deconz-ikea-open-close-remote/265819
+
+blueprint:
+  source_url: https://github.com/filipmaelbrancke/home-assistant/blob/master/blueprints/automation/filipmaelbrancke/zha_ikea_tradfri_2button_remote_open_close.yaml
+
+  name: ZHA - IKEA TRADFRI - 2 Button Open/Close Remote - Cover Control Actions
+
+  description: >-
+    This automation simulates the use of the IKEA TRADFRI open/close switch
+    connected through ZHA.
+    Short press on ☼ button will open the cover.
+    Short press on ☰ button will close the cover.
+    Long press on ☼ or ☰  will stop the cover.
+
+  domain: automation
+
+  input:
+    remote:
+      name: IKEA TRADFRI remote control
+      description: Select the remote control you wish to use.
+      selector:
+        device:
+          integration: zha
+          manufacturer: KE
+          model: TRADFRI open/close remote
+    cover:
+      name: Cover
+      description: The cover to control
+      selector:
+        target:
+          entity:
+            domain: cover
+
+
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: event
+    event_type: zha_event
+    event_data:
+      device_id: !input remote
+
+action:
+- choose:
+  - conditions:
+    - '{{ trigger.event.data.command == "up_open" }}'
+    sequence:
+    - service: cover.open_cover
+      target: !input cover
+  - conditions:
+    - '{{ trigger.event.data.command == "down_close" }}'
+    sequence:
+    - service: cover.close_cover
+      target: !input cover
+  - conditions:
+    - '{{ trigger.event.data.command in ("stop", "stop_opening", "stop_closing") }}'
+    sequence:
+    - service: cover.stop_cover
+      target: !input cover
