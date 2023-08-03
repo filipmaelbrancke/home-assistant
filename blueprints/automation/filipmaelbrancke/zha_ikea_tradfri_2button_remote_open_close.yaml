@@ -8,7 +8,7 @@
 # https://community.home-assistant.io/t/deconz-ikea-open-close-remote/265819
 
 blueprint:
-  source_url: https://github.com/filipmaelbrancke/home-assistant/blob/master/blueprints/automation/filipmaelbrancke/zha_ikea_tradfri_2button_remote_open_close.yaml
+  #source_url: https://github.com/filipmaelbrancke/home-assistant/blob/master/blueprints/automation/filipmaelbrancke/zha_ikea_tradfri_2button_remote_open_close.yaml
 
   name: ZHA - IKEA TRADFRI - 2 Button Open/Close Remote - Cover Control Actions
 
@@ -24,11 +24,10 @@ blueprint:
   input:
     remote:
       name: IKEA TRADFRI remote control
-      description: Select the remote control you wish to use.
+      description: Select the remote control you wish to use
       selector:
         device:
           integration: zha
-          manufacturer: KE
           model: TRADFRI open/close remote
     cover:
       name: Cover
@@ -37,7 +36,6 @@ blueprint:
         target:
           entity:
             domain: cover
-
 
 mode: restart
 max_exceeded: silent
@@ -49,19 +47,19 @@ trigger:
       device_id: !input remote
 
 action:
-- choose:
-  - conditions:
-    - '{{ trigger.event.data.command == "up_open" }}'
-    sequence:
-    - service: cover.open_cover
-      target: !input cover
-  - conditions:
-    - '{{ trigger.event.data.command == "down_close" }}'
-    sequence:
-    - service: cover.close_cover
-      target: !input cover
-  - conditions:
-    - '{{ trigger.event.data.command in ("stop", "stop_opening", "stop_closing") }}'
-    sequence:
-    - service: cover.stop_cover
-      target: !input cover
+  - choose:
+      - conditions:
+          - '{{ trigger.event.data.command == "up_open" }}'
+        sequence:
+          - service: cover.open_cover
+            target: !input cover
+      - conditions:
+          - '{{ trigger.event.data.command == "down_close" }}'
+        sequence:
+          - service: cover.close_cover
+            target: !input cover
+      - conditions:
+          - '{{ trigger.event.data.command in ("stop", "stop_opening", "stop_closing") }}'
+        sequence:
+          - service: cover.stop_cover
+            target: !input cover
