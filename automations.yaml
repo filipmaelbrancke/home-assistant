@@ -116,15 +116,6 @@
     target:
       entity_id: cover.office_covers
   mode: single
-- id: '1690978867682'
-  alias: Open/Close Mezzanine Cover With White Ikea Remote
-  description: ''
-  use_blueprint:
-    path: filipmaelbrancke/zha_ikea_tradfri_2button_remote_open_close.yaml
-    input:
-      remote: f0bfe057afe709a08b74026c46a05d91
-      cover:
-        entity_id: cover.ikea_of_sweden_kadrilj_roller_blind_cover
 - id: '1691050249352'
   alias: Laptop camera in use triggers warning light
   description: ''
@@ -139,3 +130,12 @@
     target:
       entity_id: switch.relay_4
   mode: single
+- id: '1691268237350'
+  alias: Open/Close Mezzanine Cover With White Ikea Remote
+  description: ''
+  use_blueprint:
+    path: filipmaelbrancke/zha_ikea_tradfri_2button_remote_open_close.yaml
+    input:
+      remote: f0bfe057afe709a08b74026c46a05d91
+      cover:
+        entity_id: cover.ikea_of_sweden_kadrilj_roller_blind_cover
