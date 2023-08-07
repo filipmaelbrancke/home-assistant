@@ -139,3 +139,26 @@
       remote: f0bfe057afe709a08b74026c46a05d91
       cover:
         entity_id: cover.ikea_of_sweden_kadrilj_roller_blind_cover
+- id: '1691349871063'
+  alias: Network - Re-enable Pi-hole after 15 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.pi_hole
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: switch.pi_hole
+    state: 'off'
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id: switch.pi_hole
+  mode: single
