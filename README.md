@@ -1,5 +1,6 @@
 # Home Assistant configuration
 
+This is a work in progress. I'm just getting my config out in the open for now for some easier collaboration.
 I have a Home Assistant install running nicely for several years already, this is an attempt at restarting from scratch.
 
 ## Add-ons
