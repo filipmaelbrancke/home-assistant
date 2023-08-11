@@ -123,7 +123,10 @@
   - platform: state
     entity_id:
     - binary_sensor.filip_macbook_16_camera_in_use
-  condition: []
+  condition:
+  - condition: zone
+    entity_id: person.filip
+    zone: zone.home
   action:
   - service: switch.turn_{{ trigger.to_state.state }}
     data: {}
