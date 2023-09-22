@@ -1,0 +1,39 @@
+---
+# This automation turns on and off a switch following a schedule.
+# Inspiration:
+# https://community.home-assistant.io/t/question-how-to-use-the-scheduler-helper-function-in-the-2022-9-release/459188/13
+
+blueprint:
+  source_url: https://github.com/filipmaelbrancke/home-assistant/blob/master/blueprints/automation/filipmaelbrancke/scheduled_switching.yaml
+
+  name: Schedule-activated Switch
+
+  description: >-
+    This automation turns a switch on and off following a schedule.
+
+  domain: automation
+
+  input:
+    schedule_entity:
+      name: Schedule
+      description: Select the schedule you wish to follow
+      selector:
+        entity:
+          domain: schedule
+    switch_target:
+      name: Switch
+      description: The switch that needs to follow the schedule
+      selector:
+        target:
+          entity:
+            domain: switch
+
+trigger:
+  - platform: state
+    entity_id: !input schedule_entity
+
+action:
+  - service: homeassistant.turn_{{ trigger.to_state.state }}
+    target: !input switch_target
+
+mode: single
