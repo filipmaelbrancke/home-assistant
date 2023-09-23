@@ -165,3 +165,12 @@
     target:
       entity_id: switch.pi_hole
   mode: single
+- id: '1695419779400'
+  alias: Bathroom extra heat
+  description: ''
+  use_blueprint:
+    path: filipmaelbrancke/scheduled_switching.yaml
+    input:
+      schedule_entity: schedule.bathroom_extra_heating
+      switch_target:
+        entity_id: switch.badkamer
