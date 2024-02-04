@@ -174,3 +174,47 @@
       schedule_entity: schedule.bathroom_extra_heating
       switch_target:
         entity_id: switch.badkamer
+- id: '1707012933365'
+  alias: black button single click office white
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 8b9b7e299695b19214719f71c886198d
+    domain: shelly
+    type: single
+    subtype: button
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      rgb_color:
+      - 139
+      - 39
+      - 39
+      brightness_pct: 50
+    target:
+      entity_id: light.ledstrip_nieuwbouw_bureau
+  mode: single
+- id: '1707012982534'
+  alias: black button long click office out
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 8b9b7e299695b19214719f71c886198d
+    domain: shelly
+    type: long
+    subtype: button
+  condition: []
+  action:
+  - service: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.wit_bureau
+  - service: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.ledstrip_nieuwbouw_bureau
+  mode: single
