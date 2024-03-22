@@ -109,7 +109,7 @@
   - delay:
       hours: 0
       minutes: 0
-      seconds: 6
+      seconds: 7
       milliseconds: 0
   - service: cover.stop_cover
     data: {}
