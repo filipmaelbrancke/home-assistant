@@ -109,12 +109,27 @@
   - delay:
       hours: 0
       minutes: 0
-      seconds: 7
+      seconds: 8
       milliseconds: 0
   - service: cover.stop_cover
     data: {}
     target:
       entity_id: cover.office_covers
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.rolluik_badkamer
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.rolluik_groot_venster
+  - service: cover.open_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.rolluik_klein_venster
   mode: single
 - id: '1691050249352'
   alias: Laptop camera in use triggers warning light
