@@ -106,10 +106,15 @@
     data: {}
     target:
       entity_id: cover.office_covers
+  - service: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.rolluik_mezzanin
   - delay:
       hours: 0
       minutes: 0
-      seconds: 8
+      seconds: 9
       milliseconds: 0
   - service: cover.stop_cover
     data: {}
@@ -120,6 +125,11 @@
     data: {}
     target:
       entity_id: cover.rolluik_badkamer
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
   - service: cover.open_cover
     metadata: {}
     data: {}
