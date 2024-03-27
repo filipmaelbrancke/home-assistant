@@ -32,7 +32,7 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: 00:30:00
+    offset: 00:10:00
   condition: []
   action:
   - service: cover.close_cover
@@ -114,7 +114,7 @@
   - delay:
       hours: 0
       minutes: 0
-      seconds: 9
+      seconds: 11
       milliseconds: 0
   - service: cover.stop_cover
     data: {}
@@ -243,3 +243,40 @@
     target:
       entity_id: light.ledstrip_nieuwbouw_bureau
   mode: single
+- id: '1711431821084'
+  alias: Office door opened
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.bureau_sensor_contact
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 1
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_7
+    metadata: {}
+    data:
+      message: Bureau deur open
+      title: Bureau deur open
+  mode: single
+- id: '1711432807017'
+  alias: "\U0001F6AA Office door contact sensor detected open notification"
+  description: ''
+  use_blueprint:
+    path: Raukze/contact-sensor-left-open-notification.yaml
+    input:
+      trigger_entity: binary_sensor.bureau_sensor_contact
+      friendly_name: Bureau buitendeur
+      duration_issue_state:
+        hours: 0
+        minutes: 5
+        seconds: 0
+        days: 0
+      notify_services_string: notify.mobile_app_pixel_7
+      notification_title: De {{ friendly_name }} is open gebleven
+      notification_message: De {{ friendly_name }} was open gelaten om {{ as_timestamp(now())
+        | timestamp_custom('%T', True) }}.
