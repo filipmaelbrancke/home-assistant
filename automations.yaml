@@ -262,6 +262,11 @@
     data:
       message: Bureau deur open
       title: Bureau deur open
+  - service: notify.mobile_app_trees_pixel_6a
+    metadata: {}
+    data:
+      message: Bureau deur open
+      title: Bureau deur open
   mode: single
 - id: '1711432807017'
   alias: "\U0001F6AA Office door contact sensor detected open notification"
@@ -276,7 +281,7 @@
         minutes: 5
         seconds: 0
         days: 0
-      notify_services_string: notify.mobile_app_pixel_7
+      notify_services_string: notify.mobile_app_pixel_7,notify.mobile_app_trees_pixel_6a
       notification_title: De {{ friendly_name }} is open gebleven
       notification_message: De {{ friendly_name }} was open gelaten om {{ as_timestamp(now())
         | timestamp_custom('%T', True) }}.
