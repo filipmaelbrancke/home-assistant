@@ -32,7 +32,7 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: 00:10:00
+    offset: 00:59:00
   condition: []
   action:
   - service: cover.close_cover
