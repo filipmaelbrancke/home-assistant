@@ -294,3 +294,13 @@
       motion_entity: binary_sensor.terras_bewegingssensor_input
       light_target:
         entity_id: light.terras_licht
+- id: '1714597255332'
+  alias: Activate front door lighting when motion is detected
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      light_target:
+        entity_id: light.voordeur_licht
+      motion_entity: binary_sensor.voordeur_bewegingssensor_input
+      no_motion_wait: 60
