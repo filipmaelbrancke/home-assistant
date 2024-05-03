@@ -32,7 +32,7 @@
   trigger:
   - platform: sun
     event: sunset
-    offset: 00:30:00
+    offset: 00:10:00
   condition: []
   action:
   - service: cover.close_cover
@@ -302,5 +302,5 @@
     input:
       light_target:
         entity_id: light.voordeur_licht
-      motion_entity: binary_sensor.voordeur_bewegingssensor_input
+      motion_entity: binary_sensor.voordeur_bewegingssensor_bij_nacht
       no_motion_wait: 60

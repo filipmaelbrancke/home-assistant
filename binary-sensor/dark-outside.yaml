@@ -1,0 +1,5 @@
+- platform: tod
+  name: Dark Outside
+  after: sunset
+  before: sunrise
+  unique_id: dark_outside_sensor
