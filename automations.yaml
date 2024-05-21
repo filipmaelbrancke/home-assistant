@@ -425,3 +425,23 @@
       entity_id: cover.rolluik_bureau_rechts
     enabled: true
   mode: single
+- id: '1716203089402'
+  alias: Garbage pickup reminder
+  description: ''
+  trigger:
+  - platform: time_pattern
+    hours: '21'
+    minutes: '00'
+    seconds: '00'
+  condition:
+  - condition: template
+    value_template: "\n{% if is_state(\"sensor.recycleapp_tomorrow\", \"None\") -%}\n
+      \ false\n{%- else -%}\n  true\n{%- endif %}"
+  action:
+  - service: notify.mobile_app_pixel_7
+    metadata: {}
+    data:
+      title: Garbage reminder
+      message: 'The following garbage will be picked up tomorrow: {{ states.sensor.recycleapp_tomorrow.state
+        }}'
+  mode: single
