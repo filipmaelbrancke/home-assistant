@@ -444,4 +444,10 @@
       title: Garbage reminder
       message: 'The following garbage will be picked up tomorrow: {{ states.sensor.recycleapp_tomorrow.state
         }}'
+  - service: notify.mobile_app_trees_pixel_6a
+    metadata: {}
+    data:
+      title: Vuilnisophaling!
+      message: 'Morgen wordt er vuilnis opgehaald: {{ states.sensor.recycleapp_tomorrow.state
+        }}'
   mode: single
