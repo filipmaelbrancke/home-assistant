@@ -444,6 +444,13 @@
       title: Garbage reminder
       message: 'The following garbage will be picked up tomorrow: {{ states.sensor.recycleapp_tomorrow.state
         }}'
+      data:
+        url: /dashboard-home/0
+        clickAction: /dashboard-home/0
+        color: '#2DF56D'
+        channel: Garbage
+        importance: high
+        visibility: public
   - service: notify.mobile_app_trees_pixel_6a
     metadata: {}
     data:
