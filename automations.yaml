@@ -267,6 +267,7 @@
     data:
       message: Bureau deur open
       title: Bureau deur open
+    enabled: false
   mode: single
 - id: '1711432807017'
   alias: "\U0001F6AA Office door contact sensor detected open notification"
