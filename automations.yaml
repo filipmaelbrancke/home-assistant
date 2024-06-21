@@ -331,7 +331,7 @@
     data: {}
     target:
       entity_id: cover.rolluik_groot_venster
-    enabled: true
+    enabled: false
   - service: cover.open_cover
     metadata: {}
     data: {}
