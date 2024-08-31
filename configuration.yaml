@@ -26,9 +26,17 @@ logger: !include logger.yaml
 
 rflink:
   port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_75830333439351E07090-if00
+# https://www.home-assistant.io/integrations/zha/#ota-updates-of-zigbee-device-firmware
+# should be enabled by default
+# zha:
+#   zigpy_config:
+#     ota:
+#       ikea_provider: true # Auto update Trådfri devices
 
-zha:
-  zigpy_config:
-    ota:
-      ikea_provider: true # Auto update Trådfri devices
-
+adaptive_lighting:
+  separate_turn_on_commands: true
+  send_split_delay: 100
+  min_brightness: 15
+  max_brightness: 90
+  lights:
+    - light.ikea_of_sweden_tradfri_bulb_e14_cws_globe_806lm_light

@@ -32,3 +32,4 @@ logs:
   # bellows.zigbee.application: debug
   # bellows.ezsp: debug
   # zigpy: debug
+  custom_components.adaptive_lighting: debug

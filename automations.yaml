@@ -472,3 +472,39 @@
         importance: high
         visibility: public
   mode: single
+- id: '1725028344599'
+  alias: Office Desk light following occupancy detection
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.everything_presence_one_occupancy
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.everything_presence_one_occupancy
+        state: 'on'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.ikea_of_sweden_tradfri_bulb_e14_cws_globe_806lm_light
+    - conditions:
+      - condition: state
+        entity_id: binary_sensor.everything_presence_one_occupancy
+        state: 'off'
+      sequence:
+      - delay:
+          hours: 0
+          minutes: 2
+          seconds: 0
+          milliseconds: 0
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.ikea_of_sweden_tradfri_bulb_e14_cws_globe_806lm_light
+  mode: restart
