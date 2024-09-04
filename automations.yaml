@@ -314,123 +314,124 @@
     offset: 00:20:00
   condition: []
   action:
-  - service: cover.open_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_badkamer
     enabled: true
+    action: cover.open_cover
   - delay:
       hours: 0
       minutes: 0
       seconds: 15
       milliseconds: 0
     enabled: true
-  - service: cover.open_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_groot_venster
     enabled: false
-  - service: cover.set_cover_position
-    metadata: {}
+    action: cover.open_cover
+  - metadata: {}
     data:
       position: 35
     target:
       entity_id: cover.rolluik_groot_venster
-  - service: cover.open_cover
-    metadata: {}
+    action: cover.set_cover_position
+    enabled: false
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_klein_venster
     enabled: true
-  - service: cover.open_cover
-    metadata: {}
+    action: cover.open_cover
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_mezzanin
     enabled: true
+    action: cover.open_cover
   - delay:
       hours: 0
       minutes: 0
       seconds: 5
       milliseconds: 0
     enabled: true
-  - service: cover.stop_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_mezzanin
     enabled: true
-  - service: cover.open_cover
-    metadata: {}
+    action: cover.stop_cover
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_links
+    action: cover.open_cover
   - delay:
       hours: 0
       minutes: 0
       seconds: 23
       milliseconds: 500
-  - service: cover.stop_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_links
-  - service: cover.open_cover
-    metadata: {}
+    action: cover.stop_cover
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_links_midden
     enabled: true
+    action: cover.open_cover
   - delay:
       hours: 0
       minutes: 0
       seconds: 23
       milliseconds: 0
     enabled: true
-  - service: cover.stop_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_links_midden
     enabled: true
-  - service: cover.open_cover
-    metadata: {}
+    action: cover.stop_cover
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_rechts_midden
     enabled: true
+    action: cover.open_cover
   - delay:
       hours: 0
       minutes: 0
       seconds: 22
       milliseconds: 500
     enabled: true
-  - service: cover.stop_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_rechts_midden
     enabled: true
-  - service: cover.open_cover
-    metadata: {}
+    action: cover.stop_cover
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_rechts
     enabled: true
+    action: cover.open_cover
   - delay:
       hours: 0
       minutes: 0
       seconds: 24
       milliseconds: 0
     enabled: true
-  - service: cover.stop_cover
-    metadata: {}
+  - metadata: {}
     data: {}
     target:
       entity_id: cover.rolluik_bureau_rechts
     enabled: true
+    action: cover.stop_cover
   mode: single
 - id: '1716203089402'
   alias: Garbage pickup reminder
