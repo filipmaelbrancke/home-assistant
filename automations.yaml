@@ -41,7 +41,7 @@
       entity_id: cover.all_covers
   mode: single
 - id: '1688672230682'
-  alias: Turn ledstrips off at sunset
+  alias: Turn night lights off at sunset
   description: ''
   trigger:
   - platform: sun
@@ -49,8 +49,7 @@
     offset: 0
   condition: []
   action:
-  - service: light.turn_off
-    data: {}
+  - data: {}
     target:
       entity_id:
       - light.ledstrip_achter_tv_beneden
@@ -58,6 +57,8 @@
       - light.ledstrip_grote_venster_living
       - light.ledstrip_living_kant_keuken
       - light.ledstrip_nieuwbouw_bureau
+      - light.vooraan_licht
+    action: light.turn_off
   mode: single
 - id: '1689693395970'
   alias: Low battery level detection
@@ -311,7 +312,7 @@
   trigger:
   - platform: sun
     event: sunrise
-    offset: 00:20:00
+    offset: 00:01:00
   condition: []
   action:
   - metadata: {}
@@ -338,7 +339,7 @@
     target:
       entity_id: cover.rolluik_groot_venster
     action: cover.set_cover_position
-    enabled: false
+    enabled: true
   - metadata: {}
     data: {}
     target:
