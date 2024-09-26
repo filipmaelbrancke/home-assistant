@@ -94,54 +94,6 @@
       entity_id: scene.night_lighting
     metadata: {}
   mode: single
-- id: '1690755948562'
-  alias: Open office covers in the morning
-  description: ''
-  trigger:
-  - platform: sun
-    event: sunrise
-    offset: 00:20:00
-  condition: []
-  action:
-  - service: cover.open_cover
-    data: {}
-    target:
-      entity_id: cover.office_covers
-  - service: cover.stop_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id: cover.rolluik_mezzanin
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 13
-      milliseconds: 0
-  - service: cover.stop_cover
-    data: {}
-    target:
-      entity_id: cover.office_covers
-  - service: cover.open_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id: cover.rolluik_badkamer
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 15
-      milliseconds: 0
-  - service: cover.open_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id: cover.rolluik_groot_venster
-  - service: cover.open_cover
-    metadata: {}
-    data: {}
-    target:
-      entity_id: cover.rolluik_klein_venster
-  mode: single
 - id: '1691050249352'
   alias: Laptop camera in use triggers warning light
   description: ''
