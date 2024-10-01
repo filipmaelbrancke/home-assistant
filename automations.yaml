@@ -197,7 +197,7 @@
       entity_id: light.ledstrip_nieuwbouw_bureau
   mode: single
 - id: '1711431821084'
-  alias: Office door opened
+  alias: Office outside door opened
   description: ''
   trigger:
   - platform: state
@@ -210,17 +210,17 @@
       seconds: 1
   condition: []
   action:
-  - service: notify.mobile_app_pixel_7
-    metadata: {}
+  - metadata: {}
     data:
       message: Bureau deur open
       title: Bureau deur open
-  - service: notify.mobile_app_trees_pixel_6a
-    metadata: {}
+    action: notify.mobile_app_pixel_7
+  - metadata: {}
     data:
       message: Bureau deur open
       title: Bureau deur open
     enabled: false
+    action: notify.mobile_app_trees_pixel_6a
   mode: single
 - id: '1711432807017'
   alias: "\U0001F6AA Office door contact sensor detected open notification"
