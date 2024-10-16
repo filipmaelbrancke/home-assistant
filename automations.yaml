@@ -1,13 +1,13 @@
 - id: '1674994585566'
   alias: Push configuration to Github daily
   description: ''
-  trigger:
-  - platform: time
-    at: 05:05:05
-  condition: []
-  action:
-  - service: shell_command.pushupdates_to_github
-    data: {}
+  triggers:
+  - at: 05:05:05
+    trigger: time
+  conditions: []
+  actions:
+  - data: {}
+    action: shell_command.pushupdates_to_github
   mode: single
 - id: '1688668153520'
   alias: Synchronize Velbus time daily & on boot
@@ -15,40 +15,40 @@
     Assistant machine. Also run this automation after Home Assistant boots (in case
     the whole system has been power-cycled, the Velbus VMBELO module starts up without
     clock)
-  trigger:
-  - platform: time
-    at: 03:30:00
-  - platform: homeassistant
-    event: start
-  condition: []
-  action:
-  - service: velbus.sync_clock
-    data:
+  triggers:
+  - at: 03:30:00
+    trigger: time
+  - event: start
+    trigger: homeassistant
+  conditions: []
+  actions:
+  - data:
       interface: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
+    action: velbus.sync_clock
   mode: single
 - id: '1688672038200'
   alias: Blinds down at night
   description: ''
-  trigger:
-  - platform: sun
-    event: sunset
+  triggers:
+  - event: sunset
     offset: 00:30:00
-  condition: []
-  action:
-  - service: cover.close_cover
-    data: {}
+    trigger: sun
+  conditions: []
+  actions:
+  - data: {}
     target:
       entity_id: cover.all_covers
+    action: cover.close_cover
   mode: single
 - id: '1688672230682'
   alias: Turn night lights off at sunset
   description: ''
-  trigger:
-  - platform: sun
-    event: sunrise
+  triggers:
+  - event: sunrise
     offset: 0
-  condition: []
-  action:
+    trigger: sun
+  conditions: []
+  actions:
   - data: {}
     target:
       entity_id:
@@ -82,34 +82,34 @@
   alias: Activate night lighting on office night scene selection
   description: Activate night lighting when pressing the sleep mode button on the
     office touch panel
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - binary_sensor.bureau_knop_3
     to: 'on'
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
+    trigger: state
+  conditions: []
+  actions:
+  - target:
       entity_id: scene.night_lighting
     metadata: {}
+    action: scene.turn_on
   mode: single
 - id: '1691050249352'
   alias: Laptop camera in use triggers warning light
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - binary_sensor.filip_macbook_16_camera_in_use
-  condition:
+    trigger: state
+  conditions:
   - condition: zone
     entity_id: person.filip
     zone: zone.home
-  action:
-  - service: switch.turn_{{ trigger.to_state.state }}
-    data: {}
+  actions:
+  - data: {}
     target:
       entity_id: switch.relay_4
+    action: switch.turn_{{ trigger.to_state.state }}
   mode: single
 - id: '1691268237350'
   alias: Open/Close Mezzanine Cover With White Ikea Remote
@@ -123,9 +123,8 @@
 - id: '1691349871063'
   alias: Network - Re-enable Pi-hole after 15 minutes
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - switch.pi_hole
     from: 'on'
     to: 'off'
@@ -133,38 +132,29 @@
       hours: 0
       minutes: 15
       seconds: 0
-  condition:
+    trigger: state
+  conditions:
   - condition: state
     entity_id: switch.pi_hole
     state: 'off'
-  action:
-  - service: homeassistant.turn_on
-    data: {}
+  actions:
+  - data: {}
     target:
       entity_id: switch.pi_hole
+    action: homeassistant.turn_on
   mode: single
-- id: '1695419779400'
-  alias: Bathroom extra heat
-  description: ''
-  use_blueprint:
-    path: filipmaelbrancke/scheduled_switching.yaml
-    input:
-      schedule_entity: schedule.bathroom_extra_heating
-      switch_target:
-        entity_id: switch.badkamer
 - id: '1707012933365'
   alias: Black button single click office white
   description: ''
-  trigger:
-  - platform: device
-    device_id: 8b9b7e299695b19214719f71c886198d
+  triggers:
+  - device_id: 8b9b7e299695b19214719f71c886198d
     domain: shelly
     type: single
     subtype: button
-  condition: []
-  action:
-  - service: light.turn_on
-    metadata: {}
+    trigger: device
+  conditions: []
+  actions:
+  - metadata: {}
     data:
       rgb_color:
       - 139
@@ -173,43 +163,44 @@
       brightness_pct: 50
     target:
       entity_id: light.ledstrip_nieuwbouw_bureau
+    action: light.turn_on
   mode: single
 - id: '1707012982534'
   alias: Black button long click office out
   description: ''
-  trigger:
-  - platform: device
-    device_id: 8b9b7e299695b19214719f71c886198d
+  triggers:
+  - device_id: 8b9b7e299695b19214719f71c886198d
     domain: shelly
     type: long
     subtype: button
-  condition: []
-  action:
-  - service: light.turn_off
-    metadata: {}
+    trigger: device
+  conditions: []
+  actions:
+  - metadata: {}
     data: {}
     target:
       entity_id: light.wit_bureau
-  - service: light.turn_off
-    metadata: {}
+    action: light.turn_off
+  - metadata: {}
     data: {}
     target:
       entity_id: light.ledstrip_nieuwbouw_bureau
+    action: light.turn_off
   mode: single
 - id: '1711431821084'
   alias: Office outside door opened
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - binary_sensor.bureau_sensor_contact
     to: 'on'
     for:
       hours: 0
       minutes: 0
       seconds: 1
-  condition: []
-  action:
+    trigger: state
+  conditions: []
+  actions:
   - metadata: {}
     data:
       message: Bureau deur open
@@ -261,12 +252,12 @@
 - id: '1714920703592'
   alias: Open covers in the morning
   description: ''
-  trigger:
-  - platform: sun
-    event: sunrise
+  triggers:
+  - event: sunrise
     offset: 00:01:00
-  condition: []
-  action:
+    trigger: sun
+  conditions: []
+  actions:
   - metadata: {}
     data: {}
     target:
@@ -283,7 +274,7 @@
     data: {}
     target:
       entity_id: cover.rolluik_groot_venster
-    enabled: false
+    enabled: true
     action: cover.open_cover
   - metadata: {}
     data:
@@ -389,18 +380,17 @@
 - id: '1716203089402'
   alias: Garbage pickup reminder
   description: ''
-  trigger:
-  - platform: time_pattern
-    hours: '20'
+  triggers:
+  - hours: '20'
     minutes: '00'
     seconds: '00'
-  condition:
+    trigger: time_pattern
+  conditions:
   - condition: template
     value_template: "\n{% if is_state(\"sensor.recycleapp_tomorrow\", \"None\") -%}\n
       \ false\n{%- else -%}\n  true\n{%- endif %}"
-  action:
-  - service: notify.mobile_app_pixel_7
-    metadata: {}
+  actions:
+  - metadata: {}
     data:
       title: Garbage reminder
       message: 'The following garbage will be picked up tomorrow: {{ states.sensor.recycleapp_tomorrow.state
@@ -412,8 +402,8 @@
         channel: Garbage
         importance: high
         visibility: public
-  - service: notify.mobile_app_trees_pixel_6a
-    metadata: {}
+    action: notify.mobile_app_pixel_7
+  - metadata: {}
     data:
       title: Vuilnisophaling!
       message: 'Morgen wordt er vuilnis opgehaald: {{ states.sensor.recycleapp_tomorrow.state
@@ -425,16 +415,18 @@
         channel: Garbage
         importance: high
         visibility: public
+    action: notify.mobile_app_trees_pixel_6a
+    enabled: true
   mode: single
 - id: '1725028344599'
   alias: Office Desk light following occupancy detection
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - binary_sensor.everything_presence_one_occupancy
-  condition: []
-  action:
+    trigger: state
+  conditions: []
+  actions:
   - choose:
     - conditions:
       - condition: state
@@ -462,3 +454,12 @@
         target:
           entity_id: light.ikea_of_sweden_tradfri_bulb_e14_cws_globe_806lm_light
   mode: restart
+- id: '1729003433307'
+  alias: Bathroom extra heat
+  description: ''
+  use_blueprint:
+    path: filipmaelbrancke/scheduled_switching.yaml
+    input:
+      schedule_entity: schedule.bathroom_extra_heating
+      switch_target:
+        entity_id: switch.badkamer

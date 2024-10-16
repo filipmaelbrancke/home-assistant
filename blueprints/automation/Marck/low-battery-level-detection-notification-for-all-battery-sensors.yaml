@@ -60,7 +60,7 @@ variables:
     '==', 'battery') %} \n  {% if 0 <= state.state | int(-1) < threshold | int \n
     \   and not state.entity_id in exclude.entity_id\n    and state.entity_id not
     in integration_entities(\"mobile_app\") %}\n    {% set result.sensors = result.sensors
-    + [state.name ~ ' (' ~ state.state ~ ' %)'] %}\n  {% endif %}\n{% endfor %} {%
+    + [state.name ~ ' (' ~ state.state ~ '%)'] %}\n  {% endif %}\n{% endfor %} {%
     for state in states.binary_sensor\n  | rejectattr('attributes.device_class', 'undefined')\n
     \ | selectattr('attributes.device_class', '==', 'battery')\n  | selectattr('state',
     '==', 'on') %}\n  {% if not state.entity_id in exclude.entity_id %}\n    {% set
@@ -69,9 +69,14 @@ variables:
 trigger:
 - platform: time
   at: !input time
-condition:
-- '{{ sensors != '''' and (day | int == 0 or day | int == now().isoweekday()) }}'
+condition: []
 action:
-- choose: []
-  default: !input actions
+- if:
+  - condition: template
+    alias: Check if sensors variable is not empty.
+    value_template: '{{ sensors != '''''''' }}'
+  - condition: template
+    alias: Check if day is everyday or current day.
+    value_template: '{{ day | int == 0 or day | int == now().isoweekday() }}'
+  then: !input actions
 mode: single

@@ -1,17 +1,17 @@
 blueprint:
   name: "\U0001F6AA Contact Sensor Left Open Notification by Malte"
-  description: "\U0001F4F2 Notifies you when a door or window is left open.\n\nAre
-    you tired of worrying about open doors or windows? This blueprint has got you
-    covered! It's designed to send you a prompt notification when a door or window
-    remains open for a specified duration.\n\n\U0001F4D6 For Details see this [Blog
-    post](https://community.home-assistant.io/t/contact-sensor-door-or-window-left-open-notification/652571)\n"
+  description: "\U0001F4F2 Notifies you when a door or window is left open.\n\n\U0001F680
+    Version 2024.04.23.1\n\nAre you tired of worrying about open doors or windows?
+    This blueprint has got you covered! It's designed to send you a prompt notification
+    when a door or window remains open for a specified duration.\n\n\U0001F4D6 For
+    Details see this [Blog post](https://community.home-assistant.io/t/contact-sensor-door-or-window-left-open-notification/652571)\n"
   domain: automation
   source_url: https://gist.github.com/Raukze/27fe0c6bf6d91b8ae2ab5e11880509ba
   input:
     trigger_entity:
       name: "\U0001F916 Entity"
-      description: 'The entity that will trigger the automation. This must be a binary
-        sensor or input_boolean. (e.g., binary_sensor.fridge)
+      description: 'The entity that will trigger the automation. This must be a `binary_sensor`
+        or `input_boolean`. (e.g., `binary_sensor.fridge`)
 
         '
       selector:
@@ -21,16 +21,18 @@ blueprint:
           - input_boolean
           multiple: false
     friendly_name:
-      name: "\U0001F3F7️ Device Friendly Name"
-      description: What should we call the entity in the notification? (e.g. Fridge)
+      name: "\U0001F3F7️ Custom Device Friendly Name"
+      description: What should we call the entity in the notification? (e.g. Fridge).
+        Defaults the entities `friendly_name` if left empty. This also supports enumeration
+        with [`binary_sensor` groups](https://www.home-assistant.io/integrations/group/#binary-sensor-light-and-switch-groups).
       default: ''
       selector:
         text: {}
     issue_state:
       name: ⚠️ Issue State
-      description: 'The state that triggers the automation. Because this is a binary
-        sensor, it can only be on or off. Use the developer tools to find the correct
-        setting.
+      description: 'The state that triggers the automation. Because this is a `binary_sensor`/`input_boolean`,
+        it can only be on or off. Use the [developer tools](https://www.home-assistant.io/docs/tools/dev-tools/#states)
+        to find the correct setting.
 
         '
       default: 'on'
@@ -39,8 +41,8 @@ blueprint:
           options:
           - 'on'
           - 'off'
-          multiple: false
           sort: false
+          multiple: false
           custom_value: false
     duration_issue_state:
       name: ⏰ Time before alert
@@ -81,9 +83,9 @@ blueprint:
     notify_services_string:
       name: "\U0001F4F2 Notify Services"
       description: 'The service that will be called to deliver the notification. (e.g.,
-        notify.mobile_app_my_phone).
+        `notify.mobile_app_my_phone`).
 
-        It also supports multiple services, separated by a comma. (e.g., notify.mobile_app_my_phone,notify.mobile_app_my_spouse_phone).
+        It also supports multiple services, separated by a comma. (e.g., `notify.mobile_app_my_phone,notify.mobile_app_my_spouse_phone`).
 
         '
       default: notify.mobile_app_<your_device_id_here>
@@ -92,7 +94,8 @@ blueprint:
     notification_click_url:
       name: "\U0001F517 Click URL"
       description: 'Where the user will be taken if they tap the notification. (e.g.,
-        /lovelace/kitchen)
+        `/lovelace/kitchen`). See [documentation](https://companion.home-assistant.io/docs/notifications/notifications-basic/#opening-a-url)
+        for details.
 
         '
       default: /lovelace/ROOM
@@ -109,8 +112,8 @@ blueprint:
       description: 'The message of the notification.
 
         '
-      default: The {{ friendly_name }} was left open at {{ as_timestamp(now()) | timestamp_custom('%T',
-        True) }}.
+      default: The {{ friendly_name }} was left open at {{ as_timestamp(initially_triggered_at)
+        | timestamp_custom('%T', True) }}.
       selector:
         text: {}
     repeat_notification:
@@ -130,7 +133,9 @@ blueprint:
           enable_day: true
     notification_icon_warning:
       name: "\U0001F6A8 Notification Icon (Android Only)"
-      description: 'The icon that is shown when the issue is reported. (e.g., mdi:fridge-alert)
+      description: 'The icon that is shown when the issue is reported. (e.g., `mdi:fridge-alert`)
+        See [documentation](https://companion.home-assistant.io/docs/notifications/notifications-basic/#opening-a-url)
+        for details.
 
         '
       default: alert
@@ -147,12 +152,16 @@ blueprint:
           - home
           - home-alert
           - home-assistant
-          multiple: false
+          - window-closed
+          - window-open
+          - window-open-variant
           sort: false
+          multiple: false
           custom_value: false
     notification_color:
       name: "\U0001F308 Notification Color (Android Only)"
-      description: The color of the notification.
+      description: The color of the notification. See [documentation](https://companion.home-assistant.io/docs/notifications/notifications-basic/#notification-color)
+        for details.
       default: red
       selector:
         select:
@@ -163,12 +172,13 @@ blueprint:
           - green
           - blue
           - purple
-          multiple: false
           sort: false
+          multiple: false
           custom_value: false
     notification_persistent:
       name: "\U0001F4CC Persistent Notification (Android Only)"
-      description: The notification cannot be closed manually.
+      description: The notification cannot be closed manually. See [documentation](https://companion.home-assistant.io/docs/notifications/notifications-basic/#persistent-notification)
+        for details.
       default: false
       selector:
         boolean: {}
@@ -176,7 +186,8 @@ blueprint:
       name: "\U0001F514 Interruption Level (iOS Only)"
       description: 'The intrusiveness of the notification received. This also determines
         whether the notification will be delivered while the device is in a focus
-        mode.
+        mode. See [documentation](https://companion.home-assistant.io/docs/notifications/notifications-basic/#interruption-level)
+        for details.
 
         '
       default: active
@@ -187,8 +198,8 @@ blueprint:
           - active
           - time-sensitive
           - critical
-          multiple: false
           sort: false
+          multiple: false
           custom_value: false
     custom_action_issue_state:
       name: ⚙️ Custom Action Issue State
@@ -207,7 +218,7 @@ blueprint:
 mode: restart
 max_exceeded: silent
 variables:
-  friendly_name: !input friendly_name
+  custom_friendly_name: !input friendly_name
   trigger_entity: !input trigger_entity
   issue_state: !input issue_state
   duration_issue_state: !input duration_issue_state
@@ -217,7 +228,6 @@ variables:
   notify_services_string: !input notify_services_string
   notification_click_url: !input notification_click_url
   notification_title: !input notification_title
-  notification_message: !input notification_message
   repeat_notification: !input repeat_notification
   time_between_repeat_notification: !input time_between_repeat_notification
   notification_icon_warning: !input notification_icon_warning
@@ -240,8 +250,9 @@ action:
 - variables:
     notify_services_list: '{{ notify_services_string.split('','') }}'
     number_of_notify_services: '{{ notify_services_list | count }}'
-    notification_tag: '{{ trigger_entity[-20:] }}-{{ friendly_name[-20:] }}-{{ notify_services_string[-20:]
-      }}'
+    notification_tag: '{{ trigger_entity[-20:] }}-{{ custom_friendly_name[-20:] }}-{{
+      notify_services_string[-20:] }}'
+    initially_triggered_at: '{{ now() }}'
 - choose:
   - conditions:
     - condition: trigger
@@ -250,6 +261,12 @@ action:
     sequence:
     - repeat:
         sequence:
+        - variables:
+            friendly_name: "{% if custom_friendly_name != '' %}\n  {{ custom_friendly_name
+              }}\n{% else %}\n  {% set expanded_trigger_entity_list = expand(trigger_entity)
+              | selectattr('state', 'eq', issue_state) | map(attribute='name') | join(',
+              ') %}\n  {{ ' & '.join(expanded_trigger_entity_list.rsplit(', ', 1))
+              }}\n{% endif %}\n"
         - parallel:
           - repeat:
               count: '{{ number_of_notify_services }}'
