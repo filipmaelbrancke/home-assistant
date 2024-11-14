@@ -463,3 +463,17 @@
       schedule_entity: schedule.bathroom_extra_heating
       switch_target:
         entity_id: switch.badkamer
+- id: '1731509297322'
+  alias: Washing machine ready notification
+  description: ''
+  use_blueprint:
+    path: Blackshome/appliance-notifications.yaml
+    input:
+      power_sensor: sensor.wasmachine_plug_power
+      include_start_notify: enable_start_notify_options
+      start_notify_device:
+      - 974ecd75bd96111f528d2e2b0535db25
+      include_end_notify: enable_end_notify_options
+      end_notify_device:
+      - 974ecd75bd96111f528d2e2b0535db25
+      include_duration_tracking: enable_duration_tracking
