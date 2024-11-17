@@ -477,3 +477,7 @@
       end_notify_device:
       - 974ecd75bd96111f528d2e2b0535db25
       include_duration_tracking: enable_duration_tracking
+      running_dead_zone: 5
+      end_message_title: Wasmachine
+      end_message: De wasmachine is klaar!
+      end_message_duration_tracking: Duurtijd
