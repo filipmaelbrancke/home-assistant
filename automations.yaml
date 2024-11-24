@@ -470,14 +470,14 @@
     path: Blackshome/appliance-notifications.yaml
     input:
       power_sensor: sensor.wasmachine_plug_power
-      include_start_notify: enable_start_notify_options
+      include_start_notify: disable_start_notify_options
       start_notify_device:
       - 974ecd75bd96111f528d2e2b0535db25
       include_end_notify: enable_end_notify_options
       end_notify_device:
       - 974ecd75bd96111f528d2e2b0535db25
       include_duration_tracking: enable_duration_tracking
-      running_dead_zone: 5
+      running_dead_zone: 8
       end_message_title: Wasmachine
       end_message: De wasmachine is klaar!
       end_message_duration_tracking: Duurtijd
