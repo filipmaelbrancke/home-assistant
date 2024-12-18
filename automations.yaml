@@ -481,3 +481,25 @@
       end_message_title: Wasmachine
       end_message: De wasmachine is klaar!
       end_message_duration_tracking: Duurtijd
+- id: '1734474030523'
+  alias: Black button double click office white
+  description: ''
+  triggers:
+  - device_id: 8b9b7e299695b19214719f71c886198d
+    domain: shelly
+    type: double
+    subtype: button
+    trigger: device
+  conditions: []
+  actions:
+  - metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 255
+      - 255
+      brightness_pct: 99
+    target:
+      entity_id: light.ledstrip_nieuwbouw_bureau
+    action: light.turn_on
+  mode: single
