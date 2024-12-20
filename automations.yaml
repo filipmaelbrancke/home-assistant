@@ -41,7 +41,7 @@
     action: cover.close_cover
   mode: single
 - id: '1688672230682'
-  alias: Turn night lights off at sunset
+  alias: Turn night lights off at sunrise
   description: ''
   triggers:
   - event: sunrise
