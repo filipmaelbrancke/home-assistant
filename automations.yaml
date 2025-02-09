@@ -476,6 +476,7 @@
       include_end_notify: enable_end_notify_options
       end_notify_device:
       - 974ecd75bd96111f528d2e2b0535db25
+      - f1d3e3a12b4ea923747957cb3f30cbe1
       include_duration_tracking: enable_duration_tracking
       running_dead_zone: 8
       end_message_title: Wasmachine
