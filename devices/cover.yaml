@@ -19,3 +19,33 @@
         - rts_eea239_01
     RTS_0E0E0E_0:
       name: Rolluiken Bureau
+- platform: template
+  covers:
+    garage_door:
+      device_class: garage
+      unique_id: "garage_door_controller"
+      friendly_name: "Garage Door"
+      value_template: '{{ is_state("binary_sensor.garage_door_opened_sensor", "on") }}'
+      open_cover:
+        - condition: state
+          entity_id:
+            - cover.garage_door
+          state: closed
+        - action: switch.turn_on
+          data: {}
+          target:
+            entity_id: switch.garagedoor
+      close_cover:
+        - condition: state
+          entity_id:
+            - cover.garage_door
+          state: open
+        - action: switch.turn_on
+          data: {}
+          target:
+            entity_id: switch.garagedoor
+      stop_cover:
+        action: switch.turn_on
+        data: {}
+        target:
+          entity_id: switch.garagedoor

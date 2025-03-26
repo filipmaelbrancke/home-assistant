@@ -504,3 +504,20 @@
       entity_id: light.ledstrip_nieuwbouw_bureau
     action: light.turn_on
   mode: single
+- id: '1742932842778'
+  alias: "\U0001F6AA Garage port contact sensor detected open notification"
+  description: ''
+  use_blueprint:
+    path: Raukze/contact-sensor-left-open-notification.yaml
+    input:
+      trigger_entity: binary_sensor.garage_door_opened_sensor
+      friendly_name: Garage poort
+      duration_issue_state:
+        hours: 0
+        minutes: 5
+        seconds: 0
+        days: 0
+      notify_services_string: notify.mobile_app_pixel_7,notify.mobile_app_trees_pixel_6a
+      notification_title: De {{ friendly_name }} is open gebleven
+      notification_message: De {{ friendly_name }} was open gelaten om {{ as_timestamp(now())
+        | timestamp_custom('%T', True) }}.
