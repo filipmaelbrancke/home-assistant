@@ -10,3 +10,16 @@ blinds_to_block_sun:
   alias: Blinds to block sun
   description: ''
   icon: mdi:emoticon-cool-outline
+blinds_to_block_more_sun:
+  sequence:
+  - action: cover.stop_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - cover.rolluik_bureau_links_midden
+      - cover.rolluik_bureau_rechts_midden
+      - cover.rolluik_bureau_links
+  alias: Blinds to block more sun
+  description: ''
+  icon: mdi:emoticon-cool-outline
