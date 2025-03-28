@@ -521,3 +521,21 @@
       notification_title: De {{ friendly_name }} is open gebleven
       notification_message: De {{ friendly_name }} was open gelaten om {{ as_timestamp(now())
         | timestamp_custom('%T', True) }}.
+- id: '1743064248603'
+  alias: Doorbell ring blinks office desk light
+  description: ''
+  use_blueprint:
+    path: rschutte/custom-blinking-lights-blueprint.yaml
+    input:
+      lights:
+        entity_id: light.ikea_of_sweden_tradfri_bulb_e14_cws_globe_806lm_light
+      color:
+      - 246
+      - 4
+      - 4
+      blink_count: 8
+      blink_duration: 1.5
+      trigger_entity: binary_sensor.g4_doorbell_doorbell
+      from_state: 'off'
+      to_state: 'on'
+      flash_with_off: false
