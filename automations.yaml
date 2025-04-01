@@ -514,7 +514,7 @@
       friendly_name: Garage poort
       duration_issue_state:
         hours: 0
-        minutes: 5
+        minutes: 10
         seconds: 0
         days: 0
       notify_services_string: notify.mobile_app_pixel_7,notify.mobile_app_trees_pixel_6a
