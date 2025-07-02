@@ -539,3 +539,12 @@
       from_state: 'off'
       to_state: 'on'
       flash_with_off: false
+- id: '1751362986050'
+  alias: Water heater - Legionella run
+  description: ''
+  use_blueprint:
+    path: filipmaelbrancke/scheduled_switching.yaml
+    input:
+      schedule_entity: schedule.anti_legionella_water_heating
+      switch_target:
+        entity_id: switch.tuinhuis_boiler
