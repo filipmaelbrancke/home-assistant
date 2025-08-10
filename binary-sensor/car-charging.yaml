@@ -1,32 +1,32 @@
-- platform: template
-  sensors:
-    ev_local_charger_available:
-      friendly_name: "Local Charger Available"
-      value_template: >-
-        {{ states('sensor.local_charging_station_free_slots')|int > 0 }}
-      icon_template: >-
-        {% if states('sensor.local_charging_station_free_slots')|int > 0 %}
-          mdi:ev-station
-        {% else %}
-          mdi:car-electric
-        {% endif %}
-    ev_local_charger_left_available:
-      friendly_name: "Local Charger 1 Available"
-      value_template: >-
-        {{ is_state('sensor.local_charging_station_left', 'AVAILABLE') }}
-      icon_template: >-
-        {% if is_state('sensor.local_charging_station_left', 'AVAILABLE') %}
-          mdi:ev-station
-        {% else %}
-          mdi:car-electric
-        {% endif %}
-    ev_local_charger_right_available:
-      friendly_name: "Local Charger 2 Available"
-      value_template: >-
-        {{ is_state('sensor.local_charging_station_right', 'AVAILABLE') }}
-      icon_template: >-
-        {% if is_state('sensor.local_charging_station_right', 'AVAILABLE') %}
-          mdi:ev-station
-        {% else %}
-          mdi:car-electric
-        {% endif %}
+# - platform: template
+#   sensors:
+#     ev_local_charger_available:
+#       friendly_name: "Local Charger Available"
+#       value_template: >-
+#         {{ states('sensor.local_charging_station_free_slots')|int > 0 }}
+#       icon_template: >-
+#         {% if states('sensor.local_charging_station_free_slots')|int > 0 %}
+#           mdi:ev-station
+#         {% else %}
+#           mdi:car-electric
+#         {% endif %}
+#     ev_local_charger_left_available:
+#       friendly_name: "Local Charger 1 Available"
+#       value_template: >-
+#         {{ is_state('sensor.local_charging_station_left', 'AVAILABLE') }}
+#       icon_template: >-
+#         {% if is_state('sensor.local_charging_station_left', 'AVAILABLE') %}
+#           mdi:ev-station
+#         {% else %}
+#           mdi:car-electric
+#         {% endif %}
+#     ev_local_charger_right_available:
+#       friendly_name: "Local Charger 2 Available"
+#       value_template: >-
+#         {{ is_state('sensor.local_charging_station_right', 'AVAILABLE') }}
+#       icon_template: >-
+#         {% if is_state('sensor.local_charging_station_right', 'AVAILABLE') %}
+#           mdi:ev-station
+#         {% else %}
+#           mdi:car-electric
+#         {% endif %}
