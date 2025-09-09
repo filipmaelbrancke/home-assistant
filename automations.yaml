@@ -548,3 +548,21 @@
       schedule_entity: schedule.anti_legionella_water_heating
       switch_target:
         entity_id: switch.tuinhuis_boiler
+- id: '1757321998456'
+  alias: Synchronize Velbus time to USB hub daily & on boot
+  description: Synchronize the clock of the Velbus modules to the clock of the Home
+    Assistant machine. Also run this automation after Home Assistant boots (in case
+    the whole system has been power-cycled, the Velbus VMBELO module starts up without
+    clock)
+  triggers:
+  - at: 03:30:00
+    trigger: time
+  - event: start
+    trigger: homeassistant
+  conditions: []
+  actions:
+  - action: velbus.sync_clock
+    metadata: {}
+    data:
+      config_entry: f42fef311e7473ef83a26a82eb819fce
+  mode: single
