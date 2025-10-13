@@ -1,16 +1,16 @@
-- platform: afvalbeheer
-  wastecollector: RecycleApp
-  # Available waste types: gft, kga, papier, pmd, restafval
-  resources:
-    - restafval
-    - gft
-    - papier
-    - pmd
-  postcode: !secret personal_zipcode
-  cityname: !secret personal_city
-  streetname: !secret personal_street
-  streetnumber: 1
-  upcomingsensor: 1
-  printwastetypes: 0
-  builtinicons: 1
-  
+# - platform: afvalbeheer
+#   wastecollector: RecycleApp
+#   # Available waste types: gft, kga, papier, pmd, restafval
+#   resources:
+#     - restafval
+#     - gft
+#     - papier
+#     - pmd
+#   postcode: !secret personal_zipcode
+#   cityname: !secret personal_city
+#   streetname: !secret personal_street
+#   streetnumber: 1
+#   upcomingsensor: 1
+#   printwastetypes: 0
+#   builtinicons: 1
+

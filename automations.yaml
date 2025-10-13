@@ -387,7 +387,7 @@
     trigger: time_pattern
   conditions:
   - condition: template
-    value_template: "\n{% if is_state(\"sensor.recycleapp_tomorrow\", \"None\") -%}\n
+    value_template: "\n{% if is_state(\"sensor.recycleapp_morgen\", \"None\") -%}\n
       \ false\n{%- else -%}\n  true\n{%- endif %}"
   actions:
   - metadata: {}

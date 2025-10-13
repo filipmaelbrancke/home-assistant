@@ -24,3 +24,4 @@ custom_components/
 tts/
 *watchman*
 *zigbee.db*
+.ha_run.lock
