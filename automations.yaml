@@ -387,13 +387,13 @@
     trigger: time_pattern
   conditions:
   - condition: template
-    value_template: "\n{% if is_state(\"sensor.recycleapp_morgen\", \"None\") -%}\n
+    value_template: "\n{% if is_state(\"sensor.recycleapp_morgen\", \"Geen\") -%}\n
       \ false\n{%- else -%}\n  true\n{%- endif %}"
   actions:
   - metadata: {}
     data:
       title: Garbage reminder
-      message: 'The following garbage will be picked up tomorrow: {{ states.sensor.recycleapp_tomorrow.state
+      message: 'The following garbage will be picked up tomorrow: {{ sensor.recycleapp_morgen
         }}'
       data:
         url: /dashboard-home/0
@@ -416,7 +416,7 @@
         importance: high
         visibility: public
     action: notify.mobile_app_trees_pixel_6a
-    enabled: true
+    enabled: false
   mode: single
 - id: '1725028344599'
   alias: Office Desk light following occupancy detection
