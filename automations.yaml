@@ -566,3 +566,23 @@
     data:
       config_entry: f42fef311e7473ef83a26a82eb819fce
   mode: single
+- id: '1763933813901'
+  alias: Turn on outside lights when arriving home
+  description: ''
+  triggers:
+  - trigger: zone
+    entity_id: person.filip
+    zone: zone.home
+    event: enter
+  conditions:
+  - condition: state
+    entity_id: binary_sensor.dark_outside
+    state:
+    - 'on'
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.vooraan_licht
+  mode: single
