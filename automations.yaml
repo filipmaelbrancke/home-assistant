@@ -393,7 +393,7 @@
   - metadata: {}
     data:
       title: Garbage reminder
-      message: 'The following garbage will be picked up tomorrow: {{ sensor.recycleapp_morgen
+      message: 'The following garbage will be picked up tomorrow: {{ states[''sensor.recycleapp_morgen''].state
         }}'
       data:
         url: /dashboard-home/0
@@ -406,17 +406,17 @@
   - metadata: {}
     data:
       title: Vuilnisophaling!
-      message: 'Morgen wordt er vuilnis opgehaald: {{ states.sensor.recycleapp_tomorrow.state
+      message: 'Morgen wordt er vuilnis opgehaald: {{ states[''sensor.recycleapp_morgen''].state
         }}'
       data:
         url: /dashboard-home/0
-        clickAction: /dashboard-home/0
+        clickAction: /dashboard-home/home2
         color: '#2DF56D'
         channel: Garbage
         importance: high
         visibility: public
     action: notify.mobile_app_trees_pixel_6a
-    enabled: false
+    enabled: true
   mode: single
 - id: '1725028344599'
   alias: Office Desk light following occupancy detection
