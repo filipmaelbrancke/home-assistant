@@ -25,3 +25,4 @@ tts/
 *watchman*
 *zigbee.db*
 .ha_run.lock
+www/media/ha-bambulab/
